@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Belmout Academy | Home</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #111827;
+      --surface-soft: #1f2937;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --blue: #60a5fa;
+      --blue-strong: #3b82f6;
+      --shadow: rgba(15, 23, 42, 0.55);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: radial-gradient(circle at top left, rgba(96, 165, 250, 0.12), transparent 28%),
+                  linear-gradient(180deg, #111827 0%, #0b1220 100%);
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e293b 65%, #3b82f6 100%);
+      color: white;
+      padding: 20px 24px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    nav {
+      background: rgba(15, 23, 42, 0.92);
+      padding: 14px 24px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(96, 165, 250, 0.18);
+      margin-top: 4px;
+    }
+
+    .tab-btn {
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      background: rgba(15, 23, 42, 0.82);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(96, 165, 250, 0.4);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.22), rgba(59, 130, 246, 0.25));
+      color: #f8fafc;
+      border-color: var(--blue);
+      box-shadow: 0 10px 24px rgba(59, 130, 246, 0.18);
+    }
+
+    main {
+      padding: 28px 24px 32px;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .tab-panel {
+      display: none;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .tab-panel.active {
+      display: block;
+      animation: fadeSlide 0.28s ease forwards;
+    }
+
+    @keyframes fadeSlide {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .image-stack {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .image-space {
+      min-height: 120px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      place-items: center;
+      color: rgba(226, 232, 240, 0.72);
+      font-weight: 600;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 0 16px 40px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .image-space img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      filter: brightness(0.96) saturate(0.95);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .image-space img:hover {
+      transform: scale(1.02);
+      filter: brightness(1) saturate(1);
+    }
+
+    p,
+    h2,
+    footer,
+    .brand,
+    .tab-btn,
+    .tab-panel {
+      color: var(--text);
+    }
+
+    h2 {
+      color: #dbeafe;
+      margin-top: 0;
+    }
+
+    p {
+      color: #cbd5e1;
+    }
+
+    @media (max-width: 900px) {
+      .doc-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="assests/logo.jpg" alt="Belmout Academy logo" />
+      <h1>Belmout Academy</h1>
+    </div>
+  </header>
+  <nav aria-label="Primary">
+    <button class="tab-btn active" data-tab="about">About Us</button>
+    <button class="tab-btn" data-tab="programs">Programs</button>
+    <button class="tab-btn" data-tab="admissions">Admissions</button>
+    <button class="tab-btn" data-tab="contact">Contact</button>
+  </nav>
+
+  <main>
+    <section id="about" class="tab-panel active">
+      <h2>About Us</h2>
+      <div class="doc-layout">
+        <div>
+          <p>Jamaica's First Centre of Excellence opened its door in 2009 with over 200 students focusing on the sciences and services emphasising civic awareness, community service, critical thinking, pedagogy, technology and leadership.</p><p>Almost 10 years later the Academy's population is five times more than it was then and we are currently ranked in the top 30 schools island-wide.</p>
+        </div>
+        <aside class="image-stack" aria-label="About Us images">
+          <div class="image-space"><img src="assests/About.jpg" alt="About Belmout Academy" /></div>
+        </aside>
+      </div>
+    </section>
+    <section id="programs" class="tab-panel">
+      <h2>Programs</h2>
+      <div class="doc-layout">
+        <div>
+          <p>At Belmont Academy, we are committed to providing programmes that inspire excellence, creativity, leadership, and lifelong success in every student.</p><p>Our programmes in Mathematics, English, Science, Business Education, Computing, Design and Technology, and the Performing Arts help students think critically and communicate confidently.</p>
+        </div>
+        <aside class="image-stack" aria-label="Programs images">
+          <div class="image-space"><img src="assests/4hclub.jpg" alt="Belmout Academy programs" /></div>
+          <div class="image-space"><img src="assests/CADET.jpg" alt="Students in programs" /></div>
+        </aside>
+      </div>
+    </section>
+    <section id="admissions" class="tab-panel">
+      <h2>Admissions</h2>
+      <div class="doc-layout">
+        <div>
+          <p>Admissions at Belmont Academy are open to students who are ready to become part of a disciplined, achievement-oriented, and supportive learning community.</p><p>Applicants submit academic records and supporting documents, then are guided into programmes that fit their strengths and interests.</p>
+        </div>
+        <aside class="image-stack" aria-label="Admissions images">
+          <div class="image-space"><img src="assests/Trip.jpg" alt="Belmout Academy admissions" /></div>
+        </aside>
+      </div>
+    </section>
+    <section id="contact" class="tab-panel">
+      <h2>Contact</h2>
+      <p>For more information about admissions, programmes, or student enrollment, contact Belmont Academy:</p>
+      <p>
+        Telephone: (876) 955-8196<br/>
+        Guidance Counsellor: (876) 955-8097<br/>
+        Executive Secretary/Fax: (876) 955-8049<br/>
+        Business Manager/Bursar: (876) 955-8395<br/>
+        Email: belmont.academy@moey.gov.jm<br/>
+        Address: Belmont Academy, Bluefields P.O., Westmoreland, Jamaica
+      </p>
+    </section>
+  </main>
+  <footer style="background:#0f172a;color:#e5e7eb;padding:20px 24px;margin-top:28px;">
+    <div style="max-width:900px;margin:auto;line-height:1.7;">
+      <strong style="color:#ffffff;">Belmout Academy</strong><br/>
+      Address: Bluefields P.O., Westmoreland, Jamaica<br/>
+      Email: belmont.academy@moey.gov.jm<br/>
+      Phone: (876) 955-8196<br/>
+      Motto: <em>Commited to Exellence</em>
+    </div>
+  </footer>
+
+
+  <script src="app.js"></script>
+</body>
+</html>
